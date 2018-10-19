@@ -4,10 +4,11 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-	<link href="css/style.css" rel="stylesheet" type="text/css"/>
+	<link href="../css/style.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 	<div id="box" class="calendar"></div>
+	<a href="javascript:void(0)" class="btn-red btn-sign" id="btnSign">点击签到</a>
 	<script type="text/javascript" src="js/calendar.js"></script>
 	<script type="text/javascript">
 		(function(doc,win){
@@ -53,6 +54,7 @@
 				var ran = Math.floor(Math.random() * 30);
 				arr.push(ran);
 			}
+			console.log(arr);
 			return arr.unique();
 		};
 	</script>

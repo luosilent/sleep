@@ -108,7 +108,7 @@
 						str += '<td class="over">' + arr[k][m] + '</td>';
 						continue;
 					}
-					str += '<td>' + arr[k][m] + '</td>';
+					str += '<td class="null">' + arr[k][m] + '</td>';
 				}
 			}
 			str += '</tr>';

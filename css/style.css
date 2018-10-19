@@ -1,14 +1,211 @@
-* { margin: 0;padding: 0;}
-.calendar{width:100%;margin:10px 0px 20px 0px;color:#555;position: relative;}
-.calendar h4 {border-bottom: 2px solid #5bd999;text-align: center;font-size: 22px;font-weight: 700;margin-top: 10px;margin-bottom:0px;padding: 10px 0;}
-.calendar button {position: absolute;width: 24px;height: 24px;top: 15px;border: none;}
-.calendar button:focus { border: none;outline: none; }
-.calendar button.month-less {left: 20px;background: url(../img/left-icon.png) no-repeat left -60px;}
-.calendar button.month-add {right: 20px;background: url(../img/right-icon.png) no-repeat left -60px;}
-.calendar .sign_tab{width: 100%;border-collapse: collapse;border: 1px solid #e8e8e8;border-top: 0;table-layout: fixed;}
-.calendar .sign_tab th{text-align: center;height: 2.25rem;font-weight: 700;}
-.calendar .sign_tab td{border: 1px solid #e8e8e8;height: 2.25rem;text-align: center;font-size: 0.8rem;font-family: arial;}
-.calendar .sign_tab td.over{background-color: #fff;border-left: 0;border-right: 0;}
-.calendar .sign_tab td.red_tbg{background-color: #f8f8f8;color: #58ce7a;position:relative;}
-.red_tbg .ui-state-default {font-size: 0.6em;width: 100%;text-align: center; position: absolute;top:1.4rem;left: 0;}
-.calendar .sign_tab td.cur_day{background-color: #FFD2D2;color: #FFF;}
+
+ul,li,p,h2{font-size:14px;margin:0;list-style:none;padding:0;}
+
+.btn-red{
+    background-color:#dd1b00;
+    color:#fff;
+    text-decoration:none;
+    padding:6px 10px;
+}
+.btn-red:hover{
+    background-color:#f00;
+    text-decoration:none;
+    color:#fff;
+}
+.color-red{color:#f00;}
+.sign-calendar-box{
+    width:710px;
+    height:600px;
+    background-color:#fbfbfb;
+    border-radius:20px;
+    overflow:hidden;
+}
+.sign-calendar-body{
+    height:444px;
+    padding:26px 26px 0;
+    background-color: #85bffe;
+    position:relative;
+}
+.sign-user{
+    background-color:#fff;
+    border-radius:4px 4px 0 0;
+    padding:30px;
+    height:170px;
+}
+.sign-user .avatar{
+    width:80px;
+    height:80px;
+    line-height:80px;
+    text-align:center;
+    border-radius:80px;
+    float:left;
+    margin-right:15px;
+    margin-bottom:30px;
+    background:#eee;
+}
+.sign-user .avatar .fa{line-height:80px;color:#999;}
+.sign-user .avatar img{width:90px;height:90px;border:2px solid #eee;border-radius:90px;}
+.sign-user p{display:block;line-height:1.8;font-size:16px;}
+.sign-user .name{margin-top:10px;}
+.sign-user .integral{
+    color:#666;
+}
+.sign-user .integral .g-iconfont{font-size:14px;color:#333;}
+.sign-user .btn-sign{
+    clear:both;
+    width:268px;
+    display:block;
+    line-height:40px;
+    text-align:center;
+    font-size:16px;
+    border:none;
+}
+.sign-user .btn-sign.signed,.sign-user .btn-sign.signing{
+    background:#ccc;
+    color:#999;
+}
+
+.sign-tips{
+    border-top:1px solid #e1e1e1;
+    background-color:#fff;
+    border-radius:0 0 0 4px;
+    padding:20px 30px 30px;
+    height:40px;
+    color:#666;
+    font-size:14px;
+    line-height:24px;
+}
+/* .sign-calendar */
+.sign-calendar{
+    width:301px;
+    height:315px;
+    border:1px solid #d8d8d8;
+    position:absolute;
+    right:20px;
+    top:25px;
+    background-color:#fff;
+    border-radius:4px 4px 0 0;
+    text-align:center;
+    overflow:hidden;
+}
+/* .sign-days */
+.sign-days .days-tit{
+    font-size:14px;
+    color:#666;
+    padding:30px 0 20px;
+}
+.sign-days .btn-red{
+    font-size:16px;
+    float:left;
+}
+.days-bar{
+    padding:1px 0;
+    width:540px;
+    height:20px;
+    line-height:20px;
+    position:relative;
+    float:left;
+    margin-right:20px;
+}
+.days-bar .bar,
+.days-bar .loading{
+    width:496px;
+    border-radius:2px;
+    height:5px;
+    line-height:0;
+    font-size:0;
+    background-color:#fff;
+    position:absolute;
+    top:11px;
+    left:0;
+    display:block;
+    z-index:1;
+}
+.days-bar .loading{
+    width:0;
+    background-color:#bd8a00;
+    z-index:2;
+}
+.days-bar .loading,
+.days-bar .num{
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+}
+.days-bar .num{
+    width:20px;height:20px;line-height:20px;font-size:12px;display:block;position:relative;z-index:3;margin:0 20px 0 26px;float:left;
+    color:#bd8a00;
+    text-align:center;
+    background-color:#fff;
+    border-radius:20px;
+    border:2px solid transparent;
+}
+.days-bar .num.active{
+    color:#fff;
+    background-color:#bd8a00;
+}
+.days-bar .num.current{
+    background-color:#fec834;
+    border:2px solid #bd8a00;
+}
+.days-bar .step{margin-left:20px;font-weight:bold;}
+/* .sign-calendar-foot */
+.sign-calendar-foot{
+    text-align:center;
+    padding:30px 0 0;
+    line-height:2;
+}
+.sign-calendar-foot p{font-size:14px;}
+.sign-calendar-foot a{
+    font-size:20px;
+    color:#f00;
+    text-decoration:underline;
+}
+.sign-calendar-foot a:hover{
+    color:#c00;
+}
+/* sign-calendar .week */
+.sign-calendar-head{
+    background:url(../img/calendar_head_bg.png) #333;
+    overflow:hidden;
+    *zoom:1;
+}
+.sign-calendar-head .years{
+    line-height:1.6;
+    font-size:18px;
+    font-weight:bold;
+    color:#fff;
+    text-align:left;
+    padding:10px 14px;
+}
+.sign-calendar .week li{width:42px;height:22px;color:#fff;float:left;}
+.sign-calendar .days li{width:42px;height:40px;float:left;line-height:42px;color:#333;border-right:1px solid #eee;border-bottom:1px solid #eee;cursor:pointer;font-size:16px;}
+.sign-calendar .days li:hover{background-color:#eee;}
+.sign-calendar .days li.last,.sign-calendar .days li.next{color:#ccc;background-color:#fff;cursor:no-drop;}
+.sign-calendar .days li.today{color:#f00;position:relative;z-index:1;background-color:#fff;cursor:pointer;}
+.sign-calendar .days li.today:after{
+    content:'·';
+    color:#f00;
+    display:block;
+    width:42px;
+    height:16px;
+    line-height:16px;
+    position:absolute;
+    bottom:0;
+    left:0;
+    font-weight:bold;
+    font-size:12px;
+    z-index:1;
+
+}
+.sign-calendar .days li.signed{
+    background-image:url(../img/signed.png);
+    background-repeat:no-repeat;
+    background-position:center center;
+}
+.sign-calendar .days li.sign_ok{
+    background-image:url(../img/signed.gif);
+    background-repeat:no-repeat;
+    background-position:center center;
+}
