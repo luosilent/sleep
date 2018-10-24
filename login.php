@@ -3,6 +3,7 @@
 session_start();
 if (isset($_SESSION['username'])) {
     setcookie("username", $_SESSION['username'], time()+3600*24*30);
+    setcookie("uid", $_SESSION['uid'], time()+3600*24*30);
 }
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">

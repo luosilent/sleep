@@ -21,8 +21,6 @@ if ($login) {
         if ($result) {
             $_SESSION['username'] = $post_name;
             $_SESSION['uid'] = $login['id'];
-
-            setcookie("pwd", $pwd, time()+3600*24);
             $data['code'] = 0;
             $data['msg'] = "登录成功";
         }
