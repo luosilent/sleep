@@ -44,3 +44,21 @@ function getUser($name)
 
     return $user;
 }
+
+function getSign($uid)
+{
+    $conn = conn();
+    $sign = array();
+
+    $sql = "select * from sign where uid = :uid";
+    $stmt = $conn->prepare($sql);
+
+    $stmt->bindParam(":uid", $uid);
+    $stmt->execute();
+
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $sign[''] = $row;
+    }
+
+    return $sign;
+}

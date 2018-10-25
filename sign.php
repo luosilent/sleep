@@ -2,10 +2,15 @@
 session_start();
 if (isset($_COOKIE['username'])) {
     $username = $_COOKIE['username'];
-    $uid = $_COOKIE['uid'];
 } else {
     header("Location: login.php");
 }
+require 'Connect/conn.php';
+$user = getUser($username);
+$uid = $user['id'];
+$rank = $user['rank'];
+$sign = getUser($uid);
+
 ?>
 <!DOCTYPE html>
 <html style="background:#666 !important;">
@@ -13,16 +18,15 @@ if (isset($_COOKIE['username'])) {
     <meta charset="UTF-8">
     <title>签到功能</title>
     <link rel="stylesheet" href="css/style.css">
-
 </head>
 <body style="background:#666 !important;">
 <div class="sign-calendar-box">
     <div class="sign-calendar-body">
         <div class="sign-user">
             <a class="avatar " href="#" title="luosilent"><img src="img/kobe.jpg"><i class="fa fa-user fa-4x"></i></a>
-            <p class="name"><?php echo $username ?></p>
-            <p class="integral"><i class="fa fa-diamond"></i> 积分：506</p>
-            <p>已连续签到<span class="color-red">305</span>天</p>
+            <p class="name"><? echo $username ?></p>
+            <p class="integral"><i class="fa fa-diamond"></i> 积分：<? echo $rank ?></p>
+            <p>已签到<span class="color-red">305</span>天</p>
             <!-- 如果已经签到 加class signed -->
             <a href="javascript:void(0)" class="btn-red btn-sign" id="btnSign">点击签到</a>
         </div>
@@ -61,6 +65,7 @@ if (isset($_COOKIE['username'])) {
 
     $(document).ready(function () {
         var uid = "<?php echo $uid ?>";
+        var username = "<?php echo $username ?>";
         var signCalendar = new calendar();
         var d = signCalendar.getDay();
         var year = d.y;
@@ -106,7 +111,7 @@ if (isset($_COOKIE['username'])) {
             $.ajax({
                 type: "POST",
                 url: "Controller/post.php",
-                data: 'is_sign=' + is_sign + '&year=' + year + '&month=' + month + '&day=' + today + '&uid='+ uid,
+                data: 'is_sign=' + is_sign + '&year=' + year + '&month=' + month + '&day=' + today + '&uid='+ uid + '&username='+username,
                 success: function () {
                     $btn.addClass('signing').attr('disabled', 'disabled').html("正在签到...");
                     // 延时两秒看效果
