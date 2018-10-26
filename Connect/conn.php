@@ -50,14 +50,14 @@ function getSign($uid)
     $conn = conn();
     $sign = array();
 
-    $sql = "select * from sign where uid = :uid";
+    $sql = "select count(is_sign) from sign where uid = :uid AND is_sign = 1";
     $stmt = $conn->prepare($sql);
 
     $stmt->bindParam(":uid", $uid);
     $stmt->execute();
 
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        $sign[''] = $row;
+        $sign = $row['count(is_sign)'];
     }
 
     return $sign;
