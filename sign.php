@@ -9,8 +9,9 @@ require 'Connect/conn.php';
 $user = getUser($username);
 $uid = $user['id'];
 $rank = $user['rank'];
-$sign = getUser($uid);
-
+$res = getSign($uid);
+$sign = $res['sign'];
+$going = $res['going'];
 ?>
 <!DOCTYPE html>
 <html style="background:#666 !important;">
@@ -26,12 +27,12 @@ $sign = getUser($uid);
             <a class="avatar " href="#" title="luosilent"><img src="img/kobe.jpg"><i class="fa fa-user fa-4x"></i></a>
             <p class="name"><? echo $username ?></p>
             <p class="integral"><i class="fa fa-diamond"></i> 积分：<? echo $rank ?></p>
-            <p>已签到<span class="color-red">305</span>天</p>
+            <p>已签到<span class="color-red"><? echo $sign ?></span>天</p>
             <!-- 如果已经签到 加class signed -->
             <a href="javascript:void(0)" class="btn-red btn-sign" id="btnSign">点击签到</a>
         </div>
         <div class="sign-tips">
-            每日签到即得1积分，连续签到更可额外领取更多积分
+            每日早睡签到即得1积分，连续签到更可额外领取更多积分
             <br>积分排名
         </div>
         <div class="sign-calendar" id="calendarViews">
@@ -40,6 +41,7 @@ $sign = getUser($uid);
         <div class="sign-days">
             <div class="days-tit">连续签到7日，可额外获得5个积分</div>
             <div class="days-bar">
+                <span id="signNum0" class="num">0</span>
                 <span id="signNum1" class="num">1</span>
                 <span id="signNum2" class="num">2</span>
                 <span id="signNum3" class="num">3</span>
@@ -47,7 +49,7 @@ $sign = getUser($uid);
                 <span id="signNum5" class="num">5</span>
                 <span id="signNum6" class="num">6</span>
                 <span id="signNum7" class="num">7</span>
-                <span class="step">2/7</span>
+                <span class="step"><? echo $going ?>/7</span>
                 <span class="bar"></span>
                 <span class="loading" id="signBarLoading"></span>
             </div>
@@ -66,6 +68,7 @@ $sign = getUser($uid);
     $(document).ready(function () {
         var uid = "<?php echo $uid ?>";
         var username = "<?php echo $username ?>";
+        var going = "<?php echo $going ?>";
         var signCalendar = new calendar();
         var d = signCalendar.getDay();
         var year = d.y;
@@ -77,7 +80,7 @@ $sign = getUser($uid);
                 data:'month='+month,
                 success: function (data) {
                 var obj = JSON.parse(data);
-                var days =new Array();
+                var days = Array();
                 $.each(obj, function (key, val) {
                     var day = val['day'];
                     var id = val['uid'];
@@ -93,7 +96,7 @@ $sign = getUser($uid);
                     var opt = {
                         id: 'calendarViews',//日历
                         signDays: days,//已经签到的日期[1,2,3]
-                        going: 2//签到持续天数<=7
+                        going: going//签到持续天数<=7
                     };
                     // 初始化日历
                     signCalendar.init(opt);
@@ -114,13 +117,14 @@ $sign = getUser($uid);
                 data: 'is_sign=' + is_sign + '&year=' + year + '&month=' + month + '&day=' + today + '&uid='+ uid + '&username='+username,
                 success: function () {
                     $btn.addClass('signing').attr('disabled', 'disabled').html("正在签到...");
-                    // 延时两秒看效果
+                    // 延时1秒看效果
                     setTimeout(function () {
                         // 获取年月日 方法: signCalendar.getDay() ;
                         // 签到成功效果
                         $btn.removeClass('signing').addClass('signed').html("已签到");
                         signCalendar.play(d.d);
                     }, 1000);
+                    window.location.reload();
                 }
             })
         });

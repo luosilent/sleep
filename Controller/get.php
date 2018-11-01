@@ -3,6 +3,7 @@ require '../Connect/conn.php';
 //set_time_limit(0);
 session_start();
 $month = $_POST['month'];
+$data = array();
 if (isset($month)) {
     $conn = conn();
     $sql = "SELECT * FROM sign WHERE (`month`= :mon) ";
@@ -27,3 +28,4 @@ if (isset($month)) {
     print_r(json_encode($data));
 
 }
+
