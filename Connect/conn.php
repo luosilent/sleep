@@ -48,8 +48,6 @@ function getUser($name)
 function getSign($uid)
 {
     $conn = conn();
-    $res = array();
-
     $sql = "select count(is_sign) from sign where uid = :uid AND is_sign = 1";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(":uid", $uid);
@@ -59,25 +57,29 @@ function getSign($uid)
             $sign = $row['count(is_sign)'];
         }
     }
+    return $sign;
+}
 
-    $sql2 = "select * from sign WHERE (`uid` = :uid) order by id DESC limit 1;";
-    $stmt = $conn->prepare($sql2);
+function getGoing($uid){
+    $conn = conn();
+    $sql = "SELECT * FROM  `sign` WHERE  `uid` = :uid AND is_sign = 1 ORDER BY id DESC LIMIT 0,1";
+    $stmt = $conn->prepare($sql);
     $stmt->bindParam(":uid", $uid);
     $re = $stmt->execute();
     if ($re) {
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $going = $row['going'];
-            $old_time = date("Y-m-d",$row['post_time']);
+            $old_time = $row['post_time'];
         }
-
+        $date = strtotime($old_time);
+        $old_time = date("Y-m-d",$date);
         $new_time = date("Y-m-d");
         $time_diff = strtotime($new_time) - strtotime($old_time);
         $diff = intval($time_diff / 86400);
+
         if ($diff > 1)
             $going = 0;
-        $res['sign'] = $sign;
-        $res['going'] = $going;
     }
-    return $res;
+    return $going;
 }
 
