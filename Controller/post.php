@@ -9,10 +9,10 @@ if ($_POST['gold'] == 1) {
     $stmt->bindParam(":username", $_POST['username']);
     $stmt->execute();
 }
-if (true) {
-    $hour = $_POST('hour');
-    $minute = $_POST('minute');
-    $second = $_POST('second');
+if ($_POST['gold'] == 2) {
+    $hour = $_POST['hour'];
+    $minute = $_POST['minute'];
+    $second = $_POST['second'];
     $time = strtotime("$hour:$minute:$second");
     $sleep_time = date("H:i:s",$time);
     $sql = "update `member` set `sleep_time`= :sleep_time WHERE (`username` = :username)";
@@ -20,7 +20,7 @@ if (true) {
     $stmt->bindParam(":username", $_POST['username']);
     $stmt->bindParam(":sleep_time", $sleep_time);
     $res = $stmt->execute();
-echo $sql;
+echo $res;
 } else {
     $sql = "INSERT INTO sign (`uid`,`is_sign`,`year`,`month`,`day`) 
 VALUES (:uid,:is_sign,:year,:month,:day)";

@@ -5,15 +5,20 @@ if (isset($_COOKIE['username'])) {
 } else {
     header("Location: login.php");
 }
-require 'Connect/conn.php';
+require 'Controller/get.php';
 $user = getUser($username);
-    $uid = $user['id'];
+$uid = $user['id'];
 $rank = $user['rank'];
-$sleep_time = $user['sleep_time'];
 $sign = getSign($uid);
 $going = getGoing($uid);
-
-
+$time = getTime($uid);
+$userRank = getRank();
+$uid = $user['id'];
+$rank = $user['rank'];
+$sleep_time = $user['sleep_time'];
+$hour = substr($sleep_time,0,2);
+$minute = substr($sleep_time,3,2);
+$second = substr($sleep_time,6,2);
 ?>
 <!DOCTYPE html>
 <html style="background:#666 !important;">
@@ -35,12 +40,13 @@ $going = getGoing($uid);
         </div>
         <div class="sign-tips">
             每日早睡签到即得1积分，默认睡觉时间23:00
-            <form>
             <br>自定义睡觉时间：
-                <input class="time" name="hour" id="hour"  placeholder="23"/>：
-                <input class="time" name="minute" id="minute" placeholder="00"/>：
-                <input class="time" name="second" id="second" placeholder="00"/ >
-                <input type="button" id="submit" value="修改">
+                <input class="time" name="hour" id="hour" value="<? echo $hour ?>" />：
+            <input class="time" name="minute" id="minute" value="<? echo $minute ?>"  />：
+             <input class="time" name="second" id="second" value="<? echo $second ?>"/>
+            <input type="button" id="submit" value="修改">
+            <br><label id="warn" style="color: red;"></label>
+
             </form>
         </div>
         <div class="sign-calendar" id="calendarViews">
@@ -72,32 +78,57 @@ $going = getGoing($uid);
     <div class="sign-calendar-body2">
         <h3>每天签到时间</h3>
         <div class="sign-body2">
-        <div >记录签到时间</div>
-            <hr/>
-        <div >记录签到时间</div>
+            <?php
+                foreach ($time as $v){
+                    if ($v['type'] == 1){
+                        echo  "<li class='type1'>$v[post_time]</li>";
+                    }else{
+                        echo  "<li class='type2'>$v[post_time]</li>";
+                    }
+                    echo "<hr/>";
+                }
+            ?>
         </div>
     </div>
     <div class="line"></div>
     <div class="sign-calendar-body3">
-        <h3>睡觉<? echo $sleep_time ?></h3>
+        <h3>计划<? echo $sleep_time ?>睡觉</h3>
         <div class="sign-body2">
-        <div>与23点比较</div>
-            <hr/>
-        <div>与23点比较</div>
+            <?php
+            foreach ($time as $v){
+                if ($v['type'] == 1){
+                    echo  "<li class='type1'>$v[diff]</li>";
+                }else {
+                    echo "<li class='type2'>$v[diff]</li>";
+                }
+                echo "<hr/>";
+            }
+            ?>
         </div>
     </div>
 </div>
-
+<div class="sign-calendar-box3">
+    <div class="sign-calendar-body2">
+        <h3>早睡积分排行</h3>
+        <div class="sign-body2">
+            <?php
+            foreach ($userRank as $v){
+                    echo  "<li class='type1'>$v[id].$v[user]</li>";
+                echo "<hr/>";
+            }
+            ?>
+        </div>
+    </div>
+</div>
 <script src="js/sign-calendar.js"></script>
 
 <script type="text/javascript" src="js/jquery-3.3.1.js" charset="utf-8"></script>
 <script>
 
     $(document).ready(function () {
-        var uid = "<?php echo $uid ?>";
-        var username = "<?php echo $username ?>";
-        var going = "<?php echo $going ?>";
-        var sleep_time = "<?php echo $sleep_time ?>";
+        var uid = "<? echo $uid ?>";
+        var username = "<? echo $username ?>";
+        var going = "<? echo $going ?>";
         var signCalendar = new calendar();
         var d = signCalendar.getDay();
         var year = d.y;
@@ -173,20 +204,36 @@ $going = getGoing($uid);
 
         // 修改时间
         $('#submit').on('click',function () {
+            var $btn = $(this);
             var hour = $("#hour").val();
             var minute = $("#minute").val();
             var second = $("#second").val();
             var gold = 2;
+            if (hour>24 || hour<18){
+                $('#warn').html("只能在18-24小时之间");
+                return
+            }
+            if (minute>=60 || minute <0){
+                $('#warn').html("只能在00-60分钟之间");
+                return
+            }
+            if (second>=60 || second <0){
+                $('#warn').html("只能在00-60秒之间");
+                return
+            }
                 $.ajax({
                     type: "POST",
                     url: "Controller/post.php",
                     data: 'gold=' + gold + '&username=' + username + '&hour=' + hour + '&minute=' + minute + '&second=' + second,
                     success: function (res) {
-                        console.log(res);
-                    },
+                        $btn.val("修改成功");
+                        setTimeout(window.location.reload.bind(window.location), 1000);
+                        }
+
                 })
         });
     })
+
 </script>
 </body>
 </html>

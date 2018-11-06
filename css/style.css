@@ -1,6 +1,6 @@
 
 ul,li,p,h2{font-size:14px;margin:0;list-style:none;padding:0;}
-h3{margin: 14px;}
+h3{margin: 12px;}
 .btn-red{
     background-color:#dd1b00;
     color:#fff;
@@ -28,13 +28,23 @@ h3{margin: 14px;}
 }
 
 .sign-calendar-box2{
-    width:278px;
+    width:300px;
     height:600px;
     background-color:#fbfbfb;
     border-radius:20px;
     overflow:hidden;
     top: 10px;
     right:250px;
+    position:absolute;
+}
+.sign-calendar-box3{
+    width:130px;
+    height:600px;
+    background-color:#fbfbfb;
+    border-radius:20px;
+    overflow:hidden;
+    top: 10px;
+    right:100px;
     position:absolute;
 }
 .sign-calendar-body2{
@@ -47,7 +57,7 @@ h3{margin: 14px;}
     position:absolute;
 }
 .sign-calendar-body3{
-    background-color: #3e68fe;
+    background-color: #6e8dfe;
     right:0;
     position:absolute;
 }
@@ -55,7 +65,7 @@ h3{margin: 14px;}
     width: 0.1em;
     height: 600px;
     background: #1b88d4;
-    right: 141px;
+    right: 169.5px;
     position:absolute;
 }
 .sign-user{
@@ -78,6 +88,12 @@ h3{margin: 14px;}
 .time{
     width: 2.5em;
     text-align: center;
+}
+.type1{
+    color: green;
+}
+.type2{
+    color: red;
 }
 .sign-user .avatar .fa{line-height:80px;color:#999;}
 .sign-user .avatar img{width:90px;height:90px;border:2px solid #eee;border-radius:90px;}
