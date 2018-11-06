@@ -141,17 +141,20 @@ function getRank()
     $conn = conn();
 
 
-    $sql = "select * from member ORDER BY rank LIMIT 0,10";
+    $sql = "select * from member ORDER BY rank DESC LIMIT 0,10";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        $res[]= $row['username'];
+        $res['user'][]= $row['username'];
+        $res['rank'][]= $row['rank'];
     }
-    foreach ($res  as $k => $v){
+    foreach ($res['user']  as $k => $v){
         $r[$k]['user'] = $v;
         $count= $k + 1;
         $r[$k]['id'] = $count;
     }
-
+    foreach ($res['rank']  as $k => $v){
+        $r[$k]['rank'] = $v;
+    }
     return $r;
 }

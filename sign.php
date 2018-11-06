@@ -113,7 +113,7 @@ $second = substr($sleep_time,6,2);
         <div class="sign-body2">
             <?php
             foreach ($userRank as $v){
-                    echo  "<li class='type1'>$v[id].$v[user]</li>";
+                    echo  "<li class='type1'>$v[id].$v[user]  $v[rank]</li>";
                 echo "<hr/>";
             }
             ?>
