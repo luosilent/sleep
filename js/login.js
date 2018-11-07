@@ -57,7 +57,7 @@ function register() {
             console.log(res);
             var obj = JSON.parse(res);
             if (obj.code == 0) {
-                window.location.href = "sign.php";
+                window.location.href = "login.php";
             } else if (obj.code == 1) {
                 alert(obj.msg);
             }
