@@ -50,7 +50,7 @@ body {
     display: block;
     width: 100%;
     height: 34px;
-    padding: 6px 12px;
+    padding-left: 6px;
     font-size: 14px;
     line-height: 1.42857143;
     color: #555;
@@ -72,7 +72,7 @@ body {
 .common_footer {
     color: #eee;
     position: fixed;
-    bottom: 0px;
+    bottom: 2px;
     text-align: center;
     width: 100%;
     background: #444;
@@ -136,9 +136,6 @@ body {
     border-radius: 4px;
 }
 
-.has-feedback .form-control {
-    padding-right: 42.5px;
-}
 
 .form-control:not(select) {
     -webkit-appearance: none;

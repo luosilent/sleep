@@ -102,4 +102,22 @@ $(document).ready(function () {
 
         })
     });
+
+    $("#close").on('click', function () {
+        if (confirm("您确定要关闭本页吗？")) {
+            $.ajax({
+                url: "Controller/logout.php",
+                type: "post",
+                data: {"uid": uid},
+                success: function (res) {
+                    var obj = JSON.parse(res);
+                    if (obj.code == 0) {
+                        window.location.href=("login.php");
+                    } else if (obj.code == 1) {
+                        alert(obj.msg);
+                    }
+                }
+            });
+        }
+    });
 })

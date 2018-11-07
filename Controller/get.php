@@ -1,7 +1,7 @@
 <?php
 define('ROOT_PATH', dirname(dirname(__FILE__)));
 require ROOT_PATH . './Connect/conn.php';
-
+session_start();
 if (isset($_POST['month'])) {
     $month = $_POST['month'];
     $uid = $_POST['uid'];

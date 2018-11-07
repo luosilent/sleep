@@ -1,6 +1,5 @@
 <?php
 require 'Controller/get.php';
-session_start();
 if (isset($_COOKIE['username'])) {
     $username = $_COOKIE['username'];
 } else {
@@ -125,6 +124,7 @@ $second = substr($sleep_time, 6, 2);
         </div>
     </div>
 </div>
+<div class="close" id="close" title="退出"></div>
 <script src="js/sign-calendar.js"></script>
 
 <script type="text/javascript" src="js/jquery-3.3.1.js" charset="utf-8"></script>

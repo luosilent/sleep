@@ -12,7 +12,8 @@ $login = getUser($post_name);
 $pwd = $login['password'];
 if ($login) {
     if (password_verify($post_pwd, $pwd)) {
-        $_SESSION['username'] = $post_name;
+        $_SESSION['username'] = $login['username'];
+        $_SESSION['uid'] = $login['id'];
         $data['code'] = 0;
         $data['msg'] = "登录成功";
     } else {
