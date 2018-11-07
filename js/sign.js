@@ -83,7 +83,7 @@ $(document).ready(function () {
         var minute = $("#minute").val();
         var second = $("#second").val();
         var gold = 2;
-        if (hour > 24 || hour < 18) {
+        if (hour >= 24 || hour < 18) {
             $('#warn').html("计划睡觉时间 只能在18-24小时之间");
             return
         }
