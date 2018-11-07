@@ -37,8 +37,12 @@ $(document).ready(function () {
         var is_sign = 1;
         var dd = new Date();
         var hours = dd.getHours();
-        if (hours > 24 || hours < 18) {
-            $btn.addClass('signing').attr('disabled', 'disabled').html("现在还不能签到...");
+        if (hours > 24 || hours < 20) {
+            if ($btn.hasClass('signed')){
+                $btn.addClass('signing').attr('disabled', 'disabled').html("已经签到了...");
+            }else{
+                $btn.addClass('signing').attr('disabled', 'disabled').html("现在还不能签到...");
+            }
         }
         if ($btn.hasClass('signed') || $btn.hasClass('signing')) return;
         $.ajax({
