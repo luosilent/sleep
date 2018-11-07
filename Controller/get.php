@@ -150,14 +150,16 @@ function getTime($uid)
 function getRank()
 {
     $conn = conn();
-
-
+    $r = array();
+    $res = array();
     $sql = "select * from member ORDER BY rank DESC LIMIT 0,10";
     $stmt = $conn->prepare($sql);
-    $stmt->execute();
-    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        $res['user'][] = $row['username'];
-        $res['rank'][] = $row['rank'];
+    $re = $stmt->execute();
+    if ($re) {
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $res['user'][] = $row['username'];
+            $res['rank'][] = $row['rank'];
+        }
     }
     foreach ($res['user'] as $k => $v) {
         $r[$k]['user'] = $v;
