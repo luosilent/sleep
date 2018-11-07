@@ -110,10 +110,19 @@ function getTime($uid)
             $res[] = strtotime($row['post_time']);
         }
     }
+    
+    $sql1 = "SELECT `sleep_time` FROM `user` WHERE  `id` = :uid";
+    $stmt1 = $conn->prepare($sql1);
+    $stmt1->bindParam(":uid", $uid);
+    $re1 = $stmt1->execute();
+      if ($re1) {
+        while ($row1 = $stmt1->fetch(PDO::FETCH_ASSOC)) {
+            $sleep_time = strtotime($row1['sleep_time']);
+        }
+    }
     foreach ($res as $k => $v) {
-
         $post_time = $v;
-        $new_time = strtotime(date("Y-m-d 23:00:00"));
+        $new_time = $sleep_time;
         if ($post_time < $new_time) {
             $flag = "早睡了";
             $to = "继续保持";
