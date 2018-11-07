@@ -1,6 +1,5 @@
 <?php
-require '../Connect/conn.php';
-session_start();
+require 'get.php';
 if (isset($_POST["name"])) {
     $post_name = $_POST["name"];
     $post_pwd = $_POST["pwd"];

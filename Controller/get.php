@@ -1,12 +1,7 @@
 <?php
 define('ROOT_PATH', dirname(dirname(__FILE__)));
 require ROOT_PATH . './Connect/conn.php';
-session_start();
-if (isset($_COOKIE['username'])) {
-    $username = $_COOKIE['username'];
-} else {
-    header("Location: login.php");
-}
+
 if (isset($_POST['month'])) {
     $month = $_POST['month'];
     $uid = $_POST['uid'];
@@ -61,6 +56,7 @@ function getSign($uid)
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(":uid", $uid);
     $rv = $stmt->execute();
+    $sign = 0;
     if ($rv) {
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $sign = $row['count(is_sign)'];
@@ -77,19 +73,24 @@ function getGoing($uid)
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(":uid", $uid);
     $re = $stmt->execute();
+    $going = 0;
+    $old_time = "";
     if ($re) {
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $going = $row['going'];
             $old_time = $row['post_time'];
         }
-        $date = strtotime($old_time);
-        $old_time = date("Y-m-d", $date);
-        $new_time = date("Y-m-d");
-        $time_diff = strtotime($new_time) - strtotime($old_time);
-        $diff = intval($time_diff / 86400);
+        if ($old_time) {
+            $date = strtotime($old_time);
+            $old_time = date("Y-m-d", $date);
+            $new_time = date("Y-m-d");
+            $time_diff = strtotime($new_time) - strtotime($old_time);
+            $diff = intval($time_diff / 86400);
 
-        if ($diff > 1)
-            $going = 0;
+
+            if ($diff > 1)
+                $going = 0;
+        }
     }
 
     return $going;
@@ -102,6 +103,8 @@ function getTime($uid)
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(":uid", $uid);
     $re = $stmt->execute();
+    $r = array();
+    $res = array();
     if ($re) {
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $res[] = strtotime($row['post_time']);
@@ -168,17 +171,3 @@ function getRank()
     return $r;
 }
 
-$username = $_COOKIE['username'];
-$user = getUser($username);
-$uid = $user['id'];
-$rank = $user['rank'];
-$sign = getSign($uid);
-$going = getGoing($uid);
-$time = getTime($uid);
-$userRank = getRank();
-$uid = $user['id'];
-$rank = $user['rank'];
-$sleep_time = $user['sleep_time'];
-$hour = substr($sleep_time, 0, 2);
-$minute = substr($sleep_time, 3, 2);
-$second = substr($sleep_time, 6, 2);

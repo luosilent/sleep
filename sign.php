@@ -1,5 +1,25 @@
 <?php
 require 'Controller/get.php';
+session_start();
+if (isset($_COOKIE['username'])) {
+    $username = $_COOKIE['username'];
+} else {
+    header("Location: login.php");
+}
+$username = $_COOKIE['username'];
+$user = getUser($username);
+$uid = $user['id'];
+$rank = $user['rank'];
+$sign = getSign($uid);
+$going = getGoing($uid);
+$time = getTime($uid);
+$userRank = getRank();
+$uid = $user['id'];
+$rank = $user['rank'];
+$sleep_time = $user['sleep_time'];
+$hour = substr($sleep_time, 0, 2);
+$minute = substr($sleep_time, 3, 2);
+$second = substr($sleep_time, 6, 2);
 ?>
 <!DOCTYPE html>
 <html style="background:#666 !important;">
@@ -98,7 +118,7 @@ require 'Controller/get.php';
         <div class="sign-body2">
             <?php
             foreach ($userRank as $v) {
-                echo "<li class='type1'>$v[id].$v[user] —》 $v[rank]分</li>";
+                echo "<div class='user'>$v[id].$v[user] <span class='rank'> $v[rank]分</span> </div> ";
                 echo "<hr/>";
             }
             ?>

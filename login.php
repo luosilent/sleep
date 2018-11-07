@@ -59,7 +59,6 @@ if (isset($_SESSION['username'])) {
                 type: "post",
                 data: {"name": name, "pwd": pwd},
                 success: function (res) {
-                    console.log(res);
                     var obj = JSON.parse(res);
                     if (obj.code == 0) {
                         window.location.href = "sign.php";

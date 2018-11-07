@@ -88,6 +88,14 @@ h3 {
     right: 170px;
     position: absolute;
 }
+.rank{
+    float: right;
+    left: 40px;
+    position: relative;
+}
+.user{
+    margin-right: 42px;
+}
 
 .sign-user {
     background-color: #fff;

@@ -35,11 +35,10 @@ $(document).ready(function () {
     $('#btnSign').on('click', function () {
         var $btn = $(this);
         var is_sign = 1;
-        var dd = new Date()
+        var dd = new Date();
         var hours = dd.getHours();
         if (hours > 24 || hours < 18) {
             $btn.addClass('signing').attr('disabled', 'disabled').html("现在还不能签到...");
-            setTimeout(window.location.reload.bind(window.location), 6000);
         }
         if ($btn.hasClass('signed') || $btn.hasClass('signing')) return;
         $.ajax({
