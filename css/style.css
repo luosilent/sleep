@@ -1,267 +1,387 @@
 
-ul,li,p,h2{font-size:14px;margin:0;list-style:none;padding:0;}
-h3{margin: 12px;}
-.btn-red{
-    background-color:#dd1b00;
-    color:#fff;
-    text-decoration:none;
-    padding:6px 10px;
-}
-.btn-red:hover{
-    background-color:#f00;
-    text-decoration:none;
-    color:#fff;
-}
-.color-red{color:#f00;}
-.sign-calendar-box{
-    width:850px;
-    height:600px;
-    background-color:#fbfbfb;
-    border-radius:20px;
-    overflow:hidden;
-}
-.sign-calendar-body{
-    height:450px;
-    padding:26px 26px 0;
-    background-color: #85bffe;
-    position:relative;
+ul, li, p, h2 {
+    font-size: 14px;
+    margin: 0;
+    list-style: none;
+    padding: 0;
 }
 
-.sign-calendar-box2{
-    width:300px;
-    height:600px;
-    background-color:#fbfbfb;
-    border-radius:20px;
-    overflow:hidden;
-    top: 10px;
-    right:250px;
-    position:absolute;
+h3 {
+    margin: 12px;
 }
-.sign-calendar-box3{
-    width:130px;
-    height:600px;
-    background-color:#fbfbfb;
-    border-radius:20px;
-    overflow:hidden;
-    top: 10px;
-    right:100px;
-    position:absolute;
+
+.btn-red {
+    background-color: #dd1b00;
+    color: #fff;
+    text-decoration: none;
+    padding: 6px 10px;
 }
-.sign-calendar-body2{
+
+.btn-red:hover {
+    background-color: #f00;
+    text-decoration: none;
+    color: #fff;
+}
+
+.color-red {
+    color: #f00;
+}
+
+.sign-calendar-box {
+    width: 850px;
+    height: 600px;
+    background-color: #fbfbfb;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.sign-calendar-body {
+    height: 450px;
+    padding: 26px 26px 0;
+    background-color: #85bffe;
+    position: relative;
+}
+
+.sign-calendar-box2 {
+    width: 300px;
+    height: 600px;
+    background-color: #fbfbfb;
+    border-radius: 20px;
+    overflow: hidden;
+    top: 10px;
+    right: 250px;
+    position: absolute;
+}
+
+.sign-calendar-box3 {
+    width: 170px;
+    height: 600px;
+    background-color: #fbfbfb;
+    border-radius: 20px;
+    overflow: hidden;
+    top: 10px;
+    right: 70px;
+    position: absolute;
+}
+
+.sign-calendar-body2 {
     background-color: #6e8dfe;
-    position:absolute;
+    position: absolute;
 }
-.sign-body2{
+
+.sign-body2 {
     background-color: #fefaf8;
     margin: 10px;
-    position:absolute;
+    position: absolute;
 }
-.sign-calendar-body3{
+
+.sign-calendar-body3 {
     background-color: #6e8dfe;
-    right:0;
-    position:absolute;
+    right: 0;
+    position: absolute;
 }
-.line{
+
+.line {
     width: 0.1em;
     height: 600px;
     background: #1b88d4;
-    right: 169.5px;
-    position:absolute;
+    right: 170px;
+    position: absolute;
 }
-.sign-user{
-    background-color:#fff;
-    border-radius:4px 4px 0 0;
-    padding:30px;
-    height:170px;
+
+.sign-user {
+    background-color: #fff;
+    border-radius: 4px 4px 0 0;
+    padding: 30px;
+    height: 170px;
 }
-.sign-user .avatar{
-    width:80px;
-    height:80px;
-    line-height:80px;
-    text-align:center;
-    border-radius:80px;
-    float:left;
-    margin-right:15px;
-    margin-bottom:30px;
-    background:#eee;
+
+.sign-user .avatar {
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+    border-radius: 80px;
+    float: left;
+    margin-right: 15px;
+    margin-bottom: 30px;
+    background: #eee;
 }
-.time{
+
+.time {
     width: 2.5em;
     text-align: center;
 }
-.type1{
+
+.type1 {
     color: green;
 }
-.type2{
+
+.type2 {
     color: red;
 }
-.sign-user .avatar .fa{line-height:80px;color:#999;}
-.sign-user .avatar img{width:90px;height:90px;border:2px solid #eee;border-radius:90px;}
-.sign-user p{display:block;line-height:1.8;font-size:16px;}
-.sign-user .name{margin-top:10px;}
-.sign-user .integral{
-    color:#666;
-}
-.sign-user .integral .g-iconfont{font-size:14px;color:#333;}
-.sign-user .btn-sign{
-    clear:both;
-    width:268px;
-    display:block;
-    line-height:40px;
-    text-align:center;
-    font-size:16px;
-    border:none;
-}
-.sign-user .btn-sign.signed,.sign-user .btn-sign.signing{
-    background:#ccc;
-    color:#999;
-}
- .sign-user .gold{
-     color: #75cc63;
+
+.warn {
+    color: red;
+    margin-left: 40px
 }
 
-
-.sign-tips{
-    border-top:1px solid #e1e1e1;
-    background-color:#fff;
-    border-radius:0 0 0 4px;
-    padding:20px 30px 30px;
-    height:50px;
-    color:#666;
-    font-size:14px;
-    line-height:24px;
+.sign-user .avatar .fa {
+    line-height: 80px;
+    color: #999;
 }
+
+.sign-user .avatar img {
+    width: 90px;
+    height: 90px;
+    border: 2px solid #eee;
+    border-radius: 90px;
+}
+
+.sign-user p {
+    display: block;
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+.sign-user .name {
+    margin-top: 10px;
+}
+
+.sign-user .integral {
+    color: #666;
+}
+
+.sign-user .integral .g-iconfont {
+    font-size: 14px;
+    color: #333;
+}
+
+.sign-user .btn-sign {
+    clear: both;
+    width: 268px;
+    display: block;
+    line-height: 40px;
+    text-align: center;
+    font-size: 16px;
+    border: none;
+}
+
+.sign-user .btn-sign.signed, .sign-user .btn-sign.signing {
+    background: #ccc;
+    color: #999;
+}
+
+.sign-user .gold {
+    color: #75cc63;
+}
+
+.sign-tips {
+    border-top: 1px solid #e1e1e1;
+    background-color: #fff;
+    border-radius: 0 0 0 4px;
+    padding: 20px 30px 30px;
+    height: 50px;
+    color: #666;
+    font-size: 14px;
+    line-height: 24px;
+}
+
 /* .sign-calendar */
-.sign-calendar{
-    width:301px;
-    height:315px;
-    border:1px solid #d8d8d8;
-    position:absolute;
-    right:20px;
-    top:25px;
-    background-color:#fff;
-    border-radius:4px 4px 0 0;
-    text-align:center;
-    overflow:hidden;
+.sign-calendar {
+    width: 301px;
+    height: 315px;
+    border: 1px solid #d8d8d8;
+    position: absolute;
+    right: 20px;
+    top: 25px;
+    background-color: #fff;
+    border-radius: 4px 4px 0 0;
+    text-align: center;
+    overflow: hidden;
 }
+
 /* .sign-days */
-.sign-days .days-tit{
-    font-size:14px;
-    color:#666;
-    padding:30px 0 20px;
+.sign-days .days-tit {
+    font-size: 14px;
+    color: #666;
+    padding: 30px 0 20px;
 }
-.sign-days .btn-red{
-    font-size:18px;
-    float:left;
+
+.sign-days .btn-red {
+    font-size: 18px;
+    float: left;
 }
-.days-bar{
-    padding:1px 0;
-    width:600px;
-    height:20px;
-    line-height:20px;
-    position:relative;
-    float:left;
-    margin-right:25px;
+
+.days-bar {
+    padding: 1px 0;
+    width: 600px;
+    height: 20px;
+    line-height: 20px;
+    position: relative;
+    float: left;
+    margin-right: 25px;
 }
+
 .days-bar .bar,
-.days-bar .loading{
-    width:496px;
-    border-radius:2px;
-    height:5px;
-    line-height:0;
-    font-size:0;
-    background-color:#fff;
-    position:absolute;
-    top:11px;
-    left:0;
-    display:block;
-    z-index:1;
+.days-bar .loading {
+    width: 496px;
+    border-radius: 2px;
+    height: 5px;
+    line-height: 0;
+    font-size: 0;
+    background-color: #fff;
+    position: absolute;
+    top: 11px;
+    left: 0;
+    display: block;
+    z-index: 1;
 }
-.days-bar .loading{
-    width:0;
-    background-color:#bd8a00;
-    z-index:2;
+
+.days-bar .loading {
+    width: 0;
+    background-color: #bd8a00;
+    z-index: 2;
 }
+
 .days-bar .loading,
-.days-bar .num{
+.days-bar .num {
     -webkit-transition: all .5s ease;
     -moz-transition: all .5s ease;
     -o-transition: all .5s ease;
     transition: all .5s ease;
 }
-.days-bar .num{
-    width:17px;height:20px;line-height:20px;font-size:12px;display:block;position:relative;z-index:3;margin:0 20px 0 26px;float:left;
-    color:#bd8a00;
-    text-align:center;
-    background-color:#fff;
-    border-radius:20px;
-    border:2px solid transparent;
+
+.days-bar .num {
+    width: 17px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 12px;
+    display: block;
+    position: relative;
+    z-index: 3;
+    margin: 0 20px 0 26px;
+    float: left;
+    color: #bd8a00;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 20px;
+    border: 2px solid transparent;
 }
-.days-bar .num.active{
-    color:#fff;
-    background-color:#bd8a00;
+
+.days-bar .num.active {
+    color: #fff;
+    background-color: #bd8a00;
 }
-.days-bar .num.current{
-    background-color:#fec834;
-    border:2px solid #bd8a00;
+
+.days-bar .num.current {
+    background-color: #fec834;
+    border: 2px solid #bd8a00;
 }
-.days-bar .step{margin-left:36px;font-weight:bold;}
+
+.days-bar .step {
+    margin-left: 36px;
+    font-weight: bold;
+}
+
 /* .sign-calendar-foot */
-.sign-calendar-foot{
-    text-align:center;
-    padding:30px 0 0;
-    line-height:2;
+.sign-calendar-foot {
+    text-align: center;
+    padding: 30px 0 0;
+    line-height: 2;
 }
-.sign-calendar-foot p{font-size:14px;}
-.sign-calendar-foot a{
-    font-size:20px;
-    color:#f00;
-    text-decoration:underline;
+
+.sign-calendar-foot p {
+    font-size: 14px;
 }
-.sign-calendar-foot a:hover{
-    color:#c00;
+
+.sign-calendar-foot a {
+    font-size: 20px;
+    color: #f00;
+    text-decoration: underline;
 }
+
+.sign-calendar-foot a:hover {
+    color: #c00;
+}
+
 /* sign-calendar .week */
-.sign-calendar-head{
-    background:url(../img/calendar_head_bg.png) #333;
-    overflow:hidden;
-    *zoom:1;
+.sign-calendar-head {
+    background: url(../img/calendar_head_bg.png) #333;
+    overflow: hidden;
+    *zoom: 1;
 }
-.sign-calendar-head .years{
-    line-height:1.6;
-    font-size:18px;
-    font-weight:bold;
-    color:#fff;
-    text-align:left;
-    padding:10px 14px;
+
+.sign-calendar-head .years {
+    line-height: 1.6;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    text-align: left;
+    padding: 10px 14px;
 }
-.sign-calendar .week li{width:42px;height:22px;color:#fff;float:left;}
-.sign-calendar .days li{width:42px;height:40px;float:left;line-height:42px;color:#333;border-right:1px solid #eee;border-bottom:1px solid #eee;cursor:pointer;font-size:16px;}
-.sign-calendar .days li:hover{background-color:#eee;}
-.sign-calendar .days li.last,.sign-calendar .days li.next{color:#ccc;background-color:#fff;cursor:no-drop;}
-.sign-calendar .days li.today{color:#f00;position:relative;z-index:1;background-color:#fff;cursor:pointer;}
-.sign-calendar .days li.today:after{
-    content:'·';
-    color:#f00;
-    display:block;
-    width:42px;
-    height:16px;
-    line-height:16px;
-    position:absolute;
-    bottom:0;
-    left:0;
-    font-weight:bold;
-    font-size:12px;
-    z-index:1;
+
+.sign-calendar .week li {
+    width: 42px;
+    height: 22px;
+    color: #fff;
+    float: left;
+}
+
+.sign-calendar .days li {
+    width: 42px;
+    height: 40px;
+    float: left;
+    line-height: 42px;
+    color: #333;
+    border-right: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.sign-calendar .days li:hover {
+    background-color: #eee;
+}
+
+.sign-calendar .days li.last, .sign-calendar .days li.next {
+    color: #ccc;
+    background-color: #fff;
+    cursor: no-drop;
+}
+
+.sign-calendar .days li.today {
+    color: #f00;
+    position: relative;
+    z-index: 1;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.sign-calendar .days li.today:after {
+    content: '·';
+    color: #f00;
+    display: block;
+    width: 42px;
+    height: 16px;
+    line-height: 16px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-weight: bold;
+    font-size: 12px;
+    z-index: 1;
 
 }
-.sign-calendar .days li.signed{
-    background-image:url(../img/signed.png);
-    background-repeat:no-repeat;
-    background-position:center center;
+
+.sign-calendar .days li.signed {
+    background-image: url(../img/signed.png);
+    background-repeat: no-repeat;
+    background-position: center center;
 }
-.sign-calendar .days li.sign_ok{
-    background-image:url(../img/signed.gif);
-    background-repeat:no-repeat;
-    background-position:center center;
+
+.sign-calendar .days li.sign_ok {
+    background-image: url(../img/signed.gif);
+    background-repeat: no-repeat;
+    background-position: center center;
 }
