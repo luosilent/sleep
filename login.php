@@ -25,10 +25,10 @@ if (isset($_SESSION['username'])) {
         </div>
         <form>
             <div class="form-group has-feedback">
-                <input type="text" class="form-control" placeholder="用户名" name="name"/>
+                <input type="text" class="form-control" maxlength="10" placeholder="用户名" name="name"/>
             </div>
             <div class="form-group has-feedback">
-                <input type="password" class="form-control" placeholder="密码" name="pwd" autocomplete="on"/>
+                <input type="password" class="form-control" maxlength="15" placeholder="密码" name="pwd" autocomplete="on"/>
             </div>
 
             <div class="row">
