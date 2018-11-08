@@ -16,6 +16,7 @@ $(document).ready(function () {
                 if (today == day && is_sign == 1) {
                     var btnSign = $("#btnSign");
                     btnSign.addClass('signed').html("已签到");
+                    btnSign.off("click");
                 }
             });
             var opt = {
@@ -37,7 +38,7 @@ $(document).ready(function () {
         var is_sign = 1;
         var dd = new Date();
         var hours = dd.getHours();
-        if (hours > 24 || hours < 18) {
+        if (hours > 24 || hours < 8) {
             if ($btn.hasClass('signed')){
                 $btn.addClass('signing').attr('disabled', 'disabled').html("已经签到了...");
             }else{
