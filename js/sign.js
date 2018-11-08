@@ -37,7 +37,7 @@ $(document).ready(function () {
         var is_sign = 1;
         var dd = new Date();
         var hours = dd.getHours();
-        if (hours > 24 || hours < 20) {
+        if (hours > 24 || hours < 18) {
             if ($btn.hasClass('signed')){
                 $btn.addClass('signing').attr('disabled', 'disabled').html("已经签到了...");
             }else{

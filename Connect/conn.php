@@ -14,7 +14,7 @@ function conn()
     $pWord = "root";
 
     try {
-        $conn = new PDO($dsn, $uName, $pWord, array(PDO::ATTR_PERSISTENT => true));
+        $conn = new PDO($dsn, $uName, $pWord);
         $conn->query("set NAMES $charset");
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     } catch (PDOException $e) {

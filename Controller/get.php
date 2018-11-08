@@ -26,7 +26,7 @@ if (isset($_POST['month'])) {
     } else {
         $data[] = array();
     }
-
+    $stmt = null;
     print_r(json_encode($data));
 
 }
@@ -45,7 +45,7 @@ function getUser($name)
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         $user = $row;
     }
-
+    $stmt = null;
     return $user;
 }
 
@@ -62,7 +62,7 @@ function getSign($uid)
             $sign = $row['count(is_sign)'];
         }
     }
-
+    $stmt = null;
     return $sign;
 }
 
@@ -92,7 +92,7 @@ function getGoing($uid)
                 $going = 0;
         }
     }
-
+    $stmt = null;
     return $going;
 }
 
@@ -111,7 +111,7 @@ function getTime($uid)
         }
     }
     
-    $sql1 = "SELECT `sleep_time` FROM `user` WHERE  `id` = :uid";
+    $sql1 = "SELECT `sleep_time` FROM `member` WHERE  `id` = :uid";
     $stmt1 = $conn->prepare($sql1);
     $stmt1->bindParam(":uid", $uid);
     $re1 = $stmt1->execute();
@@ -152,7 +152,7 @@ function getTime($uid)
         $r[$k]['post_time'] = date("Y-m-d H:i:s", $v);
         $r[$k]['type'] = $type;
     }
-
+    $stmt = null;
     return $r;
 }
 
@@ -178,6 +178,7 @@ function getRank()
     foreach ($res['rank'] as $k => $v) {
         $r[$k]['rank'] = $v;
     }
+    $stmt = null;
 
     return $r;
 }

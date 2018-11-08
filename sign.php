@@ -24,7 +24,7 @@ $second = substr($sleep_time, 6, 2);
 <html style="background:#666 !important;">
 <head>
     <meta charset="UTF-8">
-    <title>签到功能</title>
+    <title>早睡签到</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body style="background:#666 !important;">
@@ -36,7 +36,7 @@ $second = substr($sleep_time, 6, 2);
             <p class="integral"><i class="fa fa-diamond"></i> 积分：<? echo $rank ?><p id="gold"></p></p>
             <p>已签到<span class="color-red"><? echo $sign ?></span>天</p>
             <!-- 如果已经签到 加class signed -->
-            <a href="javascript:void(0)" class="btn-red btn-sign" id="btnSign" title="每天签到时间20:00-24:00">点击签到</a>
+            <a href="javascript:void(0)" class="btn-red btn-sign" id="btnSign" title="每天签到时间18:00-24:00">点击签到</a>
         </div>
         <div class="sign-tips">
             每日早睡签到即得1积分，默认睡觉时间23:00
@@ -57,7 +57,7 @@ $second = substr($sleep_time, 6, 2);
 
         </div>
         <div class="sign-days">
-            <div class="days-tit">连续签到7日，可额外获得5个积分</div>
+            <div class="days-tit">连续签到7日，可自动获得额外5个积分</div>
             <div class="days-bar">
                 <span id="signNum0" class="num">0</span>
                 <span id="signNum1" class="num">1</span>
@@ -75,7 +75,7 @@ $second = substr($sleep_time, 6, 2);
     </div>
 
     <div class="sign-calendar-foot">
-        <p>每天坚持早睡，身体好</p>
+        <p>每天坚持早睡</p>
     </div>
 </div>
 <div class="sign-calendar-box2">
@@ -113,7 +113,7 @@ $second = substr($sleep_time, 6, 2);
 </div>
 <div class="sign-calendar-box3">
     <div class="sign-calendar-body2">
-        <h3>坚持早睡 积分排行</h3>
+        <h3>坚持早睡  —  积分排行</h3>
         <div class="sign-body2">
             <?php
             foreach ($userRank as $v) {
