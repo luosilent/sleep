@@ -5,7 +5,7 @@
  * Date: 2018/9/20
  * Time: 16:53
  */
-//error_reporting(0);
+error_reporting(0);
 function conn()
 {
     $charset = 'utf8';
