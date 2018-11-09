@@ -121,7 +121,7 @@ function getTime($uid)
         }
     }
     foreach ($res as $k => $v) {
-        $post_time = $v;
+        $post_time = strtotime(date("H:i:s",$v));
         $new_time = $sleep_time;
         if ($post_time < $new_time) {
             $flag = "早睡了";

@@ -35,7 +35,6 @@ $second = substr($sleep_time, 6, 2);
             <p class="name"><? echo $username ?></p>
             <p class="integral"><i class="fa fa-diamond"></i> 积分：<? echo $rank ?><p id="gold"></p></p>
             <p>已签到<span class="color-red"><? echo $sign ?></span>天</p>
-            <!-- 如果已经签到 加class signed -->
             <a href="javascript:void(0)" class="btn-red btn-sign" id="btnSign" title="每天签到时间8:00-24:00">点击签到</a>
         </div>
         <div class="sign-tips">

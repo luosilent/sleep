@@ -16,7 +16,6 @@ $(document).ready(function () {
                 if (today == day && is_sign == 1) {
                     var btnSign = $("#btnSign");
                     btnSign.addClass('signed').html("已签到");
-                    btnSign.off("click");
                 }
             });
             var opt = {
@@ -51,27 +50,31 @@ $(document).ready(function () {
             url: "Controller/post.php",
             data: 'is_sign=' + is_sign + '&year=' + year + '&month=' + month + '&day=' + today + '&uid=' + uid + '&username=' + username,
             success: function (res) {
-                var gold = 1;
-                console.log(res);
-                if (going == 7) {
-                    $.ajax({
-                        type: "POST",
-                        url: "Controller/post.php",
-                        data: 'gold=' + gold + '&username=' + username,
-                        success: function () {
-                            $('#gold').addClass('gold').html("积分+5");
-                        }
-                    })
+                var obj = JSON.parse(res);
+                if (obj.code == 404) {
+                    alert("小老弟怎么回事！")
+                } else {
+                    var gold = 1;
+                    if (going == 7) {
+                        $.ajax({
+                            type: "POST",
+                            url: "Controller/post.php",
+                            data: 'gold=' + gold + '&username=' + username,
+                            success: function () {
+                                $('#gold').addClass('gold').html("积分+5");
+                            }
+                        })
+                    }
+                    $btn.addClass('signing').attr('disabled', 'disabled').html("正在签到...");
+                    // 延时2秒看效果
+                    setTimeout(function () {
+                        // 获取年月日 方法: signCalendar.getDay() ;
+                        // 签到成功效果
+                        $btn.removeClass('signing').addClass('signed').html("已签到");
+                        signCalendar.play(d.d);
+                    }, 2000);
+                    window.location.reload();
                 }
-                $btn.addClass('signing').attr('disabled', 'disabled').html("正在签到...");
-                // 延时2秒看效果
-                setTimeout(function () {
-                    // 获取年月日 方法: signCalendar.getDay() ;
-                    // 签到成功效果
-                    $btn.removeClass('signing').addClass('signed').html("已签到");
-                    signCalendar.play(d.d);
-                }, 2000);
-                window.location.reload();
             }
         });
 
