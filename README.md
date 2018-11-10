@@ -6,4 +6,4 @@
   
 ## 参考示图：
   
-<img align="center" src="http://bbs.luosilent.top/sleep/img/pic.png" /> 
+<img src="http://bbs.luosilent.top/sleep/img/pic.png" /> 
