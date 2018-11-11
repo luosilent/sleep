@@ -75,6 +75,9 @@ VALUES (:uid,:is_sign,:year,:month,:day)";
                 $stmt->execute();
 
             }
+            $msg['code'] = 200;
+            $msg['exp'] = "yes";
+            print json_encode($msg);
         }
     }
 }
